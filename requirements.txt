@@ -1,7 +1,9 @@
-# Base requirements
-transformers[tf,torch,sentencepiece,vision,optuna,sklearn,onnxruntime]==4.16.2
-datasets[audio]==1.16.1
+# Base requirements - Updated for Apple Silicon MPS & CUDA compatibility
+transformers[tf,torch,sentencepiece,vision,optuna,sklearn,onnxruntime]>=4.27.0
+datasets[audio]>=2.0.0
+torch>=2.0.0  # Required for MPS (Apple Silicon) support
 matplotlib
+matplotlib-inline  # Fix for IPython 7.23+ compatibility
 ipywidgets
 # Chapter 2 - Classification
 umap-learn==0.5.1
@@ -19,4 +21,4 @@ nlpaug==1.1.7
 scikit-multilearn==0.2.0
 # Chapter 10 - Pretraining
 psutil
-accelerate==0.5.1
+accelerate>=1.0.0  # Updated for modern PyTorch compatibility

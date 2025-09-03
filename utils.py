@@ -8,12 +8,17 @@ import matplotlib.font_manager as font_manager
 import matplotlib.pyplot as plt
 import torch
 import transformers
-from IPython.display import set_matplotlib_formats
+# Handle IPython set_matplotlib_formats deprecation (moved in 7.23+)
+try:
+    from IPython.display import set_matplotlib_formats
+except ImportError:
+    import matplotlib_inline.backend_inline
+    set_matplotlib_formats = matplotlib_inline.backend_inline.set_matplotlib_formats
 
 # TODO: Consider adding SageMaker StudioLab
 is_colab = "google.colab" in sys.modules
 is_kaggle = "kaggle_secrets" in sys.modules
-is_gpu_available = torch.cuda.is_available()
+is_gpu_available = torch.cuda.is_available() or (torch.backends.mps.is_available() if hasattr(torch.backends, 'mps') else False) or (torch.backends.mps.is_available() if hasattr(torch.backends, 'mps') else False)
 
 
 def install_mpl_fonts():

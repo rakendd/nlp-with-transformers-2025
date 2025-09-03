@@ -6,7 +6,7 @@ This repository contains the example code from our O'Reilly book [Natural Langua
 
 ## Getting started
 
-You can run these notebooks on cloud platforms like [Google Colab](https://colab.research.google.com/) or your local machine. Note that most chapters require a GPU to run in a reasonable amount of time, so we recommend one of the cloud platforms as they come pre-installed with CUDA.
+You can run these notebooks on cloud platforms like [Google Colab](https://colab.research.google.com/) or your local machine. Note that most chapters require a GPU to run in a reasonable amount of time, so we recommend one of the cloud platforms as they come pre-installed with CUDA, or use a local machine with NVIDIA GPU (CUDA) or Apple Silicon (MPS).
 
 ### Running on a cloud platform
 
@@ -51,7 +51,12 @@ Next, run the following command to create a `conda` virtual environment that con
 $ conda env create -f environment.yml
 ```
 
-> Note: You'll need a GPU that supports NVIDIA's [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit) to build the environment. Currently, this means you cannot build locally on Apple silicon 😢.
+> Note: For optimal performance, you'll need either:
+> - **NVIDIA GPU**: with [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit) support
+> - **Apple Silicon**: M1/M2/M3 Macs with MPS (Metal Performance Shaders) support
+> - **CPU only**: Will work but significantly slower
+>
+> Apple Silicon Macs (M1/M2/M3) are now fully supported! 🎉
 
 Chapter 7 (Question Answering) has a special set of dependencies, so to run that chapter you'll need a separate environment:
 
@@ -65,6 +70,21 @@ Once you've installed the dependencies, you can activate the `conda` environment
 $ conda activate book # or conda activate book-chapter7
 $ jupyter notebook
 ```
+
+#### Alternative: Using pip with virtual environment
+
+If you prefer using pip instead of conda, you can create a virtual environment and install the requirements:
+
+```bash
+$ python -m venv venv
+$ source venv/bin/activate  # On Windows: venv\Scripts\activate
+$ pip install -r requirements.txt
+$ jupyter notebook
+```
+
+#### Apple Silicon (M1/M2/M3) Users
+
+Apple Silicon Macs automatically benefit from MPS (Metal Performance Shaders) acceleration when using PyTorch 2.0+. The notebooks will automatically detect and use your Mac's GPU for significantly faster training and inference. No additional setup required!
 
 ## FAQ
 
