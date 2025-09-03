@@ -1,5 +1,5 @@
 # Base requirements - Updated for Apple Silicon MPS & CUDA compatibility
-transformers[tf,torch,sentencepiece,vision,optuna,sklearn,onnxruntime]>=4.27.0
+transformers[torch,sentencepiece,vision]>=4.27.0  # Simplified to avoid TF conflicts
 datasets[audio]>=2.0.0
 torch>=2.0.0  # Required for MPS (Apple Silicon) support
 matplotlib
