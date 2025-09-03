@@ -5,6 +5,7 @@ torch>=2.0.0  # Required for MPS (Apple Silicon) support
 matplotlib
 matplotlib-inline  # Fix for IPython 7.23+ compatibility
 ipywidgets
+ipykernel  # Required for Jupyter notebook support in VS Code
 # Chapter 2 - Classification
 umap-learn==0.5.1
 # Chapter 3 - Anatomy
